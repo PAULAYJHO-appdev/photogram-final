@@ -1,13 +1,13 @@
 <h1> Sign in</h1>
 
-<form action="/insert_user_email">
+<form action="/user_verify_credentials" method="post">
   <div>
-    <label for="browser_email">Email</label>
-     <input id="browser_email" type="text" name="input_email" placeholder="Enter your email...">
+    <label for="email_box">Email</label>
+     <input id="email_box" type="text" name="query_email" placeholder="Enter your email...">
   </div>
   <div>
-  <label for="browser_password">Password</label>
-  <input id="browser_password" type="password" name="input_password" placeholder="Enter your password...">
+  <label for="password_box">Password</label>
+  <input id="password_box" type="password" name="query_password" placeholder="Enter your password...">
   </div>
   <div>
   <button>Sign in</button>
@@ -15,6 +15,6 @@
 </form>
 
 <hr>
-<div>
+<p>
 Or, <a href="/user_sign_up">Sign up</a> instead.
-</div>
+</p>

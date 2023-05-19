@@ -23,7 +23,7 @@
       <%= user.username %>
     </td>
      <td>
-      <%= user.private %>
+      <%= if user.private? then 'Yes' else 'No' end%>
     </td>
      <td>
     </td>

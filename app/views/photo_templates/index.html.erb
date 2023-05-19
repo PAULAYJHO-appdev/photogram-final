@@ -23,23 +23,29 @@
     </th>
   </tr>
 
+<% @photos.each do |photo|%>
 <tr>
   <td>
-  photo
+    <img src="<%= photo.image %>">
   </td>
   <td>
-  Once you’ve accepted your flaws, no one can use them against you.
+    <%= photo.caption %>
   </td>
   <td>
-  catherina
+    <%= photo.owner_id%>
   </td>
   <td>
-  about 4 years ago
+    <%= photo.created_at%>
   </td>
   <td>
-  5
+    <%= photo.likes_count%>
   </td>
   <td>
-  Show details
+    <a href="/user_sign_in/">
+    Show details
+    </a>
   </td>
 </tr>
+
+<% end %>
+</table>

@@ -32,10 +32,10 @@
     <%= photo.caption %>
   </td>
   <td>
-    <%= photo.owner_id%>
+    <%= photo.poster.username %>
   </td>
   <td>
-    <%= photo.created_at%>
+    <%= time_ago_in_words(photo.created_at)%> ago
   </td>
   <td>
     <%= photo.likes_count%>

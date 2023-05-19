@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   get("/", { :controller => "users", :action => "index" })
 
   #Users
-
+  get("/users", { :controller => "users", :action => "index" })
 
   #Photos
+  get("/photos", { :controller => "photos", :action => "index" })
 
 
   #Sign In

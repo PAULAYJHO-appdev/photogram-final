@@ -16,16 +16,20 @@
     </th>
   </tr>
 
+<% @users.each do |user| %>
   <tr>
     <td>
-    alice
+      <%= user.id %>
     </td>
      <td>
-    Yes
+      <%= user.private %>
     </td>
      <td>
     </td>
      <td>
-    Show details
+      <a href="/user_sign_in">Show details</a>
     </td>
   </tr>
+
+  <% end %>
+  </table>

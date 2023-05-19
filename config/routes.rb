@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   #Photos
   get("/photos", { :controller => "photos", :action => "index" })
 
-
   #Sign In
-
+  get("/user_sign_in", { :controller => "users", :action => "authenticate"})
 
   #Sign Up
+  get("/user_sign_up", { :controller => "users", :action => "new_registration_form"})
 end

@@ -1,9 +1,11 @@
 class PhotosController < ApplicationController
   def index
     matching_photos = Photo.all
-
     @list_of_photos = matching_photos.order({ :created_at => :desc })
-
+    
+    #To display form
+    @user = User.where(id: params[:user_id]).first
+    
     render({ :template => "photos/index.html.erb" })
   end
 

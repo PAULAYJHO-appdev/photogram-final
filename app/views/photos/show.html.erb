@@ -30,7 +30,7 @@
         Owner
       </dt>
       <dd>
-        <%= @the_photo.owner_id %>
+        <%= @the_photo.poster.username %>
       </dd>
 
       <dt>
@@ -105,123 +105,21 @@
     <th>Posted</th>
   </tr>
 
+    <% @the_photo.comments.each do |comment| %>
     <tr>
       <td>
-        roselee
+        <%= comment.commenter.username %>
       </td>
 
       <td>
-        Know how to listen, and you will profit even from those who talk badly.
+        <%= comment.body %>
       </td>
 
       <td>
-        about 4 years ago
+        <%= time_ago_in_words(comment.created_at) %> ago
       </td>
-    </tr>  
-    <tr>
-      <td>
-        diego
-      </td>
-
-      <td>
-        The mind is not a vessel to be filled but a fire to be kindled.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        trina
-      </td>
-
-      <td>
-        It is impossible to begin to learn that which one thinks one already knows.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        augustine
-      </td>
-
-      <td>
-        Only the educated are free.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        galen
-      </td>
-
-      <td>
-        Most people would rather give than get affection.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        anisa
-      </td>
-
-      <td>
-        There was never a genius without a tincture of madness.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        jolie
-      </td>
-
-      <td>
-        Beware the barrenness of a busy life.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        galen
-      </td>
-
-      <td>
-        A few vices are sufficient to darken many virtues.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
-    <tr>
-      <td>
-        robin
-      </td>
-
-      <td>
-        The mind is not a vessel to be filled but a fire to be kindled.
-      </td>
-
-      <td>
-        about 4 years ago
-      </td>
-    </tr>  
+    </tr> 
+  <% end %>
 </table>
 
 <h3>Add a new comment</h3>

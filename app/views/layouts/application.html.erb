@@ -26,7 +26,15 @@
           All public photos
         </a>
       </li>
-       <li>
+     <% if session[:user_id] %>
+     <% user = User.find(session[:user_id]) %>
+     <li>
+      <%= user.username %>
+     </li>
+      <li>
+        <a href="/user_sign_out">Sign out</a>
+        <% else %>
+        <li>
         <a href="/user_sign_in">
           Sign in
         </a>
@@ -35,6 +43,8 @@
         <a href="/user_sign_up">
           Sign up
         </a>
+      </li>
+        <% end %>
       </li>
     </ul>
 

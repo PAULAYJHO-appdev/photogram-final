@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
     the_id = params.fetch("path_id")
     matching_photos = Photo.where({ :id => the_id })
     @the_photo = matching_photos.at(0)
-  
+    @current_user_id = session[:user_id]
     if session[:user_id].nil?
       redirect_to("/user_sign_in", { :alert => "You have to sign in first." })
     else

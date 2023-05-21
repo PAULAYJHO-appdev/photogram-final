@@ -11,13 +11,15 @@ class PhotosController < ApplicationController
 
   def show
     the_id = params.fetch("path_id")
-
     matching_photos = Photo.where({ :id => the_id })
-
     @the_photo = matching_photos.at(0)
-
-    render({ :template => "photos/show.html.erb" })
-  end
+  
+    if session[:user_id].nil?
+      redirect_to("/user_sign_in", { :alert => "You have to sign in first." })
+    else
+      render template: "/photos/show" # Render show template for the_photo
+    end
+  end  
 
   def create
     the_photo = Photo.new

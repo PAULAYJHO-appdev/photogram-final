@@ -110,12 +110,7 @@ Rails.application.routes.draw do
   #Users
   get("/users", { :controller => "users", :action => "index" })
 
-  #Photos
-  get("/photos", { :controller => "photos", :action => "index" })
+  #Feed
+  get("/users/:path_id", { :controller => "users", :action => "feed" })
 
-  #Sign In
-  get("/user_sign_in", { :controller => "users", :action => "authenticate"})
-
-  #Sign Up
-  get("/user_sign_up", { :controller => "users", :action => "new_registration_form"})
 end

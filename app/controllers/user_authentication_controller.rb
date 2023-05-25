@@ -84,5 +84,5 @@ class UserAuthenticationController < ApplicationController
     
     redirect_to("/", { :notice => "User account cancelled" })
   end
- 
+
 end

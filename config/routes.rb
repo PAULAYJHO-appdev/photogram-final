@@ -113,4 +113,7 @@ Rails.application.routes.draw do
   #Feed
   get("/users/:path_id", { :controller => "users", :action => "feed" })
 
+  #Discover
+  get("/users/:path_id/discover", { :controller => "users", :action => "discover" })
+
 end

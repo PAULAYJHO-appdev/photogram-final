@@ -12,5 +12,10 @@ class UsersController < ApplicationController
     render({ :template => "user_templates/feed.html.erb"})
   end
  
+  def discover
+    the_username = params.fetch("path_id")
+    @user = User.where({ :username => the_username }).at(0)
+    render({ :template => "user_templates/discover.html.erb"})
+  end
 
 end

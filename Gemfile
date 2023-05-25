@@ -77,5 +77,6 @@ group :production do
   gem 'pg'
 end
 
+#Image upload
 gem "carrierwave"
 gem "cloudinary"

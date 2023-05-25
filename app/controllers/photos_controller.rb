@@ -24,8 +24,9 @@ class PhotosController < ApplicationController
     if session[:user_id].nil?
       redirect_to("/user_sign_in", { :alert => "You have to sign in first." })
     else
-      render template: "/photos/show" # Render show template for the_photo
+      render({ :template => "/photos/show.html.erb" }) # Render show template for the_photo
     end
+
   end
 
   def create

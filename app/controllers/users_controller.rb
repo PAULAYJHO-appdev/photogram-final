@@ -6,7 +6,9 @@ class UsersController < ApplicationController
   end
 
   def feed
-
+    the_username = params.fetch("path_id")
+    @user = User.where({ :username => the_username }).at(0)
+    @user_feed = @user.feed
     render({ :template => "user_templates/feed.html.erb"})
   end
  

@@ -1,8 +1,15 @@
 class PhotosController < ApplicationController
   def index
+    @list_of_photos = Array.new
     matching_photos = Photo.all
-    @list_of_photos = matching_photos.order({ :created_at => :desc })
     
+    matching_photos.each do |photo|
+      if photo.poster.private == false
+        @list_of_photos.push(photo)
+      end
+    end
+
+    @list_of_photos = @list_of_photos.sort_by { |photo| photo.created_at }.reverse
     #To display form
     @user = User.where(id: params[:user_id]).first
     
@@ -19,7 +26,7 @@ class PhotosController < ApplicationController
     else
       render template: "/photos/show" # Render show template for the_photo
     end
-  end  
+  end
 
   def create
     the_photo = Photo.new

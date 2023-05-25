@@ -29,7 +29,7 @@
      <% if session[:user_id] %>
      <% user = User.find(session[:user_id]) %>
      <li>
-      <%= user.username %>
+      <a href="/edit_user_profile"><%= user.username %></a>
      </li>
       <li>
         <a href="/user_sign_out">Sign out</a>

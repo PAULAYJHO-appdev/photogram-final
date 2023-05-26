@@ -116,4 +116,7 @@ Rails.application.routes.draw do
   #Discover
   get("/users/:path_id/discover", { :controller => "users", :action => "discover" })
 
+  #Liked photos
+  get("/users/:path_id/liked_photos", { :controller => "users", :action => "liked" })
+
 end

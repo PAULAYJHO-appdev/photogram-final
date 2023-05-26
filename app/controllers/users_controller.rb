@@ -5,11 +5,11 @@ class UsersController < ApplicationController
     render({ :template => "user_templates/index.html.erb"})
   end
 
-  def feed
+  def profile
     the_username = params.fetch("path_id")
     @user = User.where({ :username => the_username }).at(0)
     @user_feed = @user.feed
-    render({ :template => "user_templates/feed.html.erb"})
+    render({ :template => "user_templates/profile.html.erb"})
   end
  
   def discover
@@ -22,5 +22,13 @@ class UsersController < ApplicationController
     the_username = params.fetch("path_id")
     @user = User.where({ :username => the_username }).at(0)
     render({ :template => "user_templates/liked.html.erb" })
+  end
+
+  def feed
+    the_username = params.fetch("path_id")
+    @user = User.where({ :username => the_username }).at(0)
+
+    @user_feed = @user.feed
+    render({ :template => "user_templates/feed.html.erb" })
   end
 end

@@ -108,10 +108,12 @@ Rails.application.routes.draw do
   get("/", { :controller => "users", :action => "index" })
 
   #Users
-  get("/users", { :controller => "users", :action => "index" })
+  get("/users/", { :controller => "users", :action => "index" })
 
+  #Profile
+  get("/users/:path_id", { :controller => "users", :action => "profile" })
   #Feed
-  get("/users/:path_id", { :controller => "users", :action => "feed" })
+  get("/users/:path_id/feed", { :controller => "users", :action => "feed"})
 
   #Discover
   get("/users/:path_id/discover", { :controller => "users", :action => "discover" })

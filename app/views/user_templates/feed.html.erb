@@ -1,5 +1,3 @@
-<h1><%= notice %></h1>
-
 <h1><%= @user.username %></h1>
 
 <dl>
@@ -7,81 +5,12 @@
   <dd><%= @user.private %></dd>
 
   <dt>Followers</dt>
-    <dd>
-      <%= @user.followers.count %>
-    </dd>
-
-    <dd>
-
-      <% if session.fetch(:user_id)!=nil %>
-        <% if session.fetch(:user_id)!= @user.id %>
-          <% follow_request = FollowRequest.where({:recipient_id => @user.id, :sender_id => session.fetch(:user_id)}).at(0)%>
-          <% if follow_request!=nil%>
-            <% if follow_request.status == "pending" %>
-              Request sent. <a href="/cancel_follow_request/<%= follow_request.id%>">Cancel</a>
-            <% else%>
-              <a href="/delete_follow_request/<%= follow_request.id%>">Unfollow</a>
-            <% end%>
-          <% else%>
-            <form action="/insert_follow_request" method="post">
-                  <input type="hidden" name="query_recipient_id" value="<%= @user.id%>">
-                  <input type="hidden" name="query_sender_id" value="<%= session.fetch(:user_id)%>">
-                  <button>
-                    Follow
-                  </button>
-            </form>
-          <% end%>
-        <% end%>
-      <% end %>
-    </dd>
-
-    <% if session.fetch(:user_id)== @user.id %>
-      <dd>
-        <h4>Pending follow requests</h4>
-          <% pending_follow_requests = FollowRequest.where({:recipient_id => @user.id, :status => "pending"}) %>
-          <% pending_follow_requests.each do |request| %>
-          <ul>
-            <li>
-              <%= User.where({:id => request.sender_id}).at(0).username%>
-
-              <form action="/modify_follow_request/<%= request.id%>" method="post">
-                <input name="query_status" value="accepted" type="hidden">
-
-                <button>
-                  Accept
-                </button>
-              </form>
-
-            <form action="/modify_follow_request/<%= request.id%>" method="post">
-              <input name="query_status" value="rejected" type="hidden">
-            
-              <button>
-                Reject
-              </button>
-            </form>
-          </li>
-          </ul>
-          <% end %>
-      </dd>
-    <% end%>
+  <dd>
+    <%= @user.followers.count %>
+  </dd>
 
   <dt>Following</dt>
   <dd> <%= @user.following.count %> </dd>
-
-  <% if session.fetch(:user_id)== @user.id %>
-    <dt>Edit user</dt>
-    <dd>
-      <form action="/modify_user/<%= @user.id %>" method="post" >
-        <label for="browser_username">Username</label>
-        <input id="browser_username" type="text" name="query_username" placeholder="Enter a username..." value="<%= @user.username %>">
-        <label for="browser_private">Private?</label>
-        <input id="browser_private" type="checkbox" name="query_private" checked="">
-
-        <button>Update user</button>
-      </form>
-    </dd>
-  <% end%>
-</dl>
 
 <nav>
   <ul>
@@ -101,7 +30,7 @@
 </nav>
 
 
-<h2>Own photos (<%= @user.own_photos.count %>)</h2>
+<h2>Feed (<%= @user_feed.count %>)</h2>
 
 <table border="1">
   <tr>
@@ -128,7 +57,7 @@
     <th></th>
   </tr>
 
-  <% @user.own_photos.each do |photo| %>
+  <% @user_feed.each do |photo| %>
   <tr>
     <td>
       <img src="<%= photo.image %>">
@@ -143,11 +72,11 @@
     </td>
 
     <td>
-      <%= time_ago_in_words(photo.created_at) %> ago
+      <%= photo.created_at %>
     </td>
 
     <td>
-      <%= photo.likes.count %>
+      <%= photo.likes_count %>
     </td>
     
     <td>
